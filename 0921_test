@@ -1,0 +1,17 @@
+print('------------成绩等级输入------------')
+person = 0
+while person <= 2 :
+    number = int(input('该同学的编号是:'))
+    person += 1
+    score = int(input('该同学的成绩是:'))
+
+    if 0<=score<60 :
+        print('D\n')
+    elif score>=60 and score<80 :
+        print('C\n')
+    elif score>=80 and score<90 :
+        print('B\n')
+    elif score>=90 and score<=100 :
+        print('A\n')
+    else:
+        print('输入错误\n')
