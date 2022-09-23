@@ -1,0 +1,23 @@
+#dict1 = {'one' :1, 'two' : 2, 'three' :3}
+#dict2 = {'one' :4, 'tmp ':5}
+#dict1.update(dict2)
+#print(dict1)
+#one = (1,2,3)
+#one[2] = 4
+#print(one[2])
+#tmp = [2,1,5,4,7]
+#print(max(tmp))
+#print(tmp.index(max(tmp)))
+
+func = lambda x:x%2
+result = filter(func, [1,2,3,4,5])
+print(list(result))
+
+str = 'hello,Python'
+suffix = 'Python'
+print(str.endswith(suffix , 2))
+#true输出结果，endswith用于判断是否以suffix结尾，从str的第二位‘l’开始
+
+sets = {1,2,3,4,5}
+print(sets[2])
+#输出报错，字典不支持索引
