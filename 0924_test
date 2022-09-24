@@ -1,0 +1,124 @@
+#strip()
+'www.Ilovefish.com'.lstrip('wIco.')
+'lovefish.com'
+>>> 'www.Ilovefish.com'.lstrip('wIlco.')
+'vefish.com'
+>>> 'www.Ilovefish.com'.rstrip('wIlco.')
+'www.Ilovefish.com'
+>>> 'www.Ilovefish.com'.rstrip('wIlcom.')
+'www.Ilovefish'
+>>> 'www.Ilovefish.com'.strip('wIlcom.')
+'vefish'
+
+#partition()
+'www.Ilovefish.com'.partition('.')
+('www', '.', 'Ilovefish.com')
+>>> 'www.Ilovefish.com'.rpartition('.')
+('www.Ilovefish', '.', 'com')
+
+#join()
+''.join(('fish','fish'))
+'fishfish'
+>>> ''.join(('fish'*2))
+'fishfish'
+
+#split
+>>> '一，二，三'.split('，')
+['一', '二', '三']
+>>> '一，二，三'.rsplit('，')
+['一', '二', '三']
+>>> '一\n二\n三'.split('\n')
+['一', '二', '三']
+>>> '一\n二\n三'.splitlines()
+['一', '二', '三']
+>>> '一\n二\r\n三'.splitlines()
+['一', '二', '三']
+>>> '一\n二\r\n三'.splitlines(True)
+['一\n', '二\r\n', '三']
+
+#format
+>>> '1+2 = {}, 2的平方是{}, 3的立方是{}'.format(1+2,2*2,3**3)
+'1+2 = 3, 2的平方是4, 3的立方是27'
+>>> '{}看到{}就很激动！'.format('老鼠','猫')
+'老鼠看到猫就很激动！'
+>>> '{1}看到{0}就很激动！'.format('老鼠','猫')
+'猫看到老鼠就很激动！'
+>>> '{0:^10}{1:>10}'.format(520,250)
+'   520           250'
+>>> '{0:^10}{1:<10}'.format(520,250)
+'   520    250       '
+>>> '{0:>10}{1:<10}'.format(520,250)
+'       520250       '
+>>> '{0:%>10}{1:%<10}'.format(520,250)
+'%%%%%%%520250%%%%%%%'
+>>> '{:0>10}'.format(520)
+'0000000520'
+>>> '{:0<10}'.format(520)
+'5200000000'
+>>> '{:+}{:+}'.format(520,-250)
+'+520-250'
+>>> '{:-}{:-}'.format(520,-250)
+'520-250'
+>>> '{: }{: }'.format(520,-250)
+' 520-250'
+>>> '{:+}{:-}'.format(520,-250)
+'+520-250'
+>>> '{:,}'.format(123456789)
+'123,456,789'
+>>> '{:_}'.format(123456789)
+'123_456_789'
+>>> '{:_}'.format(123)
+'123'
+>>> '{:.4f}'.format(3.1415926)
+'3.1416'
+>>> '{:.4g}'.format(3.1415926)
+'3.142'
+>>> '{:.4}'.format('I love fish')
+'I lo'
+
+#f-string\F-string格式推导式
+>>> '{:{fill}{align}{width}.{prec}{ty}}'.format(3.1415,fill='+',align='^',width=10, prec=3, ty='g')
+'+++3.14+++'
+>>> 
+>>> fill = '+'
+>>> align = '^'
+>>> width = 10
+>>> prec = 3
+>>> ty = 'f'
+>>> f'{3.1415:{fill}{align}{width}.{prec}{ty}}'
+'++3.142+++'
+
+#enumerate
+>>> seasons = ['spring' , 'summer' , 'autumn' , 'winter']
+>>> list(enumerate(seasons , 100))
+[(100, 'spring'), (101, 'summer'), (102, 'autumn'), (103, 'winter')]
+
+#zip
+>>> x = [1,2,3]
+>>> y = [4,5,6]
+>>> zipped = zip(x , y)
+>>> list(zipped)
+[(1, 4), (2, 5), (3, 6)]
+>>> z = [6,7,8]
+>>> zipped = zip(x ,y ,z)
+>>> list(zipped)
+[(1, 4, 6), (2, 5, 7), (3, 6, 8)]
+>>> z = 'fish'
+>>> zipped = zip(x,y,z)
+>>> list(zipped)
+[(1, 4, 'f'), (2, 5, 'i'), (3, 6, 's')]
+>>> import itertools
+>>> zipped = itertools.zip_longest(x,y,z)
+>>> list(zipped)
+[(1, 4, 'f'), (2, 5, 'i'), (3, 6, 's'), (None, None, 'h')]
+
+#map #filter
+>>> mapped = map(ord , 'fish')
+>>> list(mapped)
+[102, 105, 115, 104]
+>>> mapped = map(pow , [2,3,10] , [8,2,3])
+>>> list(mapped)
+[256, 9, 1000]
+>>> list(filter(str.islower , 'FishAD'))
+['i', 's', 'h']
+>>> list(filter(min , [1,2,3], [0,5,1]))
