@@ -1,0 +1,140 @@
+#汉诺塔
+
+n = int(input('汉诺塔层数：'))
+def hanoi(n, x, y, z):
+	if n == 1:
+		print(x, '-->', z)
+	else:
+		hanoi(n-1, x, z, y)#将x上的n-1个金片移动到y
+		print(x, '-->', z)#将最底下的金片从x移动到z
+		hanoi(n-1, y, x, z)#将y上的n-1个金片从y移到z
+
+hanoi(n, 'A', 'B', 'C')
+
+>>> def myfunc(name):
+	for i in range(3):
+		print(f'I love {name}.')
+>>> myfunc('Python')
+I love Python.
+I love Python.
+I love Python.
+>>> def myfunc(name,times):
+	for i in range(times):
+		print(f'I love {name}.')
+
+>>> myfunc('Python' , 5)
+I love Python.
+I love Python.
+I love Python.
+I love Python.
+I love Python.
+>>> def div(x,y):
+	z = x/y
+	return z
+
+>>> div(4,2)
+2.0
+>>> def div(x,y):
+	return x / y
+
+>>> div(6,3)
+2.0
+>>> def div(x,y):
+	if y == 0:
+		return '除数不能为0'
+	else:
+		return x / y
+
+	
+>>> div(4,0)
+'除数不能为0'
+>>> def myfunc():
+	pass
+
+>>> print(myfunc())
+None
+>>> print(myfunc())#没有return，也会默认返回none
+None
+
+
+>>> def myfunc(a ,s ,d):
+	return''.join((a,s,d))
+
+>>> myfunc('我','爱','python')
+'我爱python'
+>>> def myfunc(a ,s ,d):
+	return''.join((d,s,a))
+
+>>> myfunc('我','爱','python')
+'python爱我'
+>>> def myfunc(a ,s ,d):
+	return'_'.join((d,s,a))
+
+>>> myfunc('我','爱','python')
+'python_爱_我'
+>>> #关键字参数，默认参数，关键字参数需要放在位置参数之后
+>>> def myfunc(a ,s ,d='python'):
+	return'_'.join((d,s,a))
+
+>>> myfunc('爱' , a='我')
+Traceback (most recent call last):
+  File "<pyshell#45>", line 1, in <module>
+    myfunc('爱' , a='我')
+TypeError: myfunc() got multiple values for argument 'a'
+>>> myfunc('我' , '爱')
+'python_爱_我'
+>>> myfunc('我' , s='爱')
+'python_爱_我'
+>>> #abs()求绝对值
+>>> def myfunc(a, /, b, c)#/左侧不能是关键字参数
+>>> def abc(a, *, b, c):#*左侧可以是位置参数和关键字参数，右侧只能是关键字参数
+	print(a,b,c)
+
+>>> abc(a=1,2,3)
+SyntaxError: positional argument follows keyword argument
+>>> abc(a=1,b=2,c=3)
+1 2 3
+
+
+
+>>> #收集参数，用*定义
+>>> def myfunc(*args):
+	print('有{}个参数。'.format(len(args)))
+	print('第二个参数是：{}'.format(args[1]))
+
+	
+>>> myfunc(1,2,3,4,5,6,7,8,9)
+有9个参数。
+第二个参数是：2
+>>> #收集参数，用*定义 ，但调用参数不用带*！
+>>> def myfunc(*args):
+	print(args)
+
+>>> myfunc(1,2,3,4,5,6,7,8,9)
+(1, 2, 3, 4, 5, 6, 7, 8, 9)
+>>> #收集参数背后是元组
+>>> def myfunc(*args):
+	print(type(args))
+
+	
+>>> myfunc(1,2,3,4,5,6,7,8,9)
+<class 'tuple'>
+>>> #收集参数要同时和其他形参一起使用时，需要使用关键字参数传递
+>>> #**将参数打包为字典
+>>> def myfunc(**kwargs):
+	print(kwargs)
+
+>>> myfunc(a=1,b=2,c=3)
+{'a': 1, 'b': 2, 'c': 3}
+>>> args = (1,2,3,4)
+>>> def myfunc(a,b,c,d):
+	print(a,b,c,d)
+  >>> myfunc(*args)
+1 2 3 4
+>>> #对元组进行了解包，加*
+>>> #同理，对字典进行解包，加**
+>>> kwargs = {'a':1, 'b':2, 'c':3}
+>>> myfunc(**kwargs)
+1 2 3 4
+>>> myfunc(1, 2, 3, 4, x=5, y=6)
+1 (2, 3, 4) {'x': 5, 'y': 6}
